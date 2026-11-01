@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>優花と出会った日</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px 10px;
+    background: #FFFFFF;
+    color: #3e3e3e;
+    font-family: "Noto Serif JP", serif;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.title {
+    font-family: "Noto Serif JP", serif;
+    color: #3e3e3e;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+.flip-card {
+    background: #FFE4E1;
+    border-radius: 12px;
+    width: 85vw;
+    max-width: 320px;
+    height: 140px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+    margin: 0 auto;
+}
+
+/* 四欄數字與標籤對齊 */
+.number,
+.label {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.number {
+    font-family: "Noto Serif JP", serif;
+    color: #3e3e3e;
+    font-size: clamp(19px, 5.5vw, 27px);
+    font-weight: 600;
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+}
+
+.label {
+    font-family: "Noto Serif JP", serif;
+    color: #3e3e3e;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0;
+    margin-top: 7px;
+}
+
+.footer {
+    font-family: "Noto Serif JP", serif;
+    color: #3e3e3e;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">
+        優花と出会った日
+    </div>
+
+    <div class="flip-card">
+
+        <div class="number" id="countdown">
+            <span>856</span>
+            <span>01</span>
+            <span>50</span>
+            <span>05</span>
+        </div>
+
+        <div class="label">
+            <span>DAYS</span>
+            <span>HOURS</span>
+            <span>MINUTES</span>
+            <span>SECONDS</span>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        2024.06.29 — これからも一緒に
+    </div>
+
+</div>
+
+<script>
+function updateCounter() {
+
+    // 日本時間 2024年6月29日を起點にする
+    const start = new Date("2024-06-29T00:00:00+09:00");
+    const now = new Date();
+
+    let diff = Math.max(0, now.getTime() - start.getTime());
+
+    // 經過的天、時、分、秒
+    const days = Math.floor(diff / 86400000);
+
+    const hours = Math.floor(
+        (diff % 86400000) / 3600000
+    );
+
+    const minutes = Math.floor(
+        (diff % 3600000) / 60000
+    );
+
+    const seconds = Math.floor(
+        (diff % 60000) / 1000
+    );
+
+    // 更新四欄數字
+    document.getElementById("countdown").innerHTML = `
+        <span>${days}</span>
+        <span>${String(hours).padStart(2, "0")}</span>
+        <span>${String(minutes).padStart(2, "0")}</span>
+        <span>${String(seconds).padStart(2, "0")}</span>
+    `;
+}
+
+// 立即顯示
+updateCounter();
+
+// 每秒更新
+setInterval(updateCounter, 1000);
+
+</script>
+
+</body>
+</html>
