@@ -46,10 +46,10 @@ body {
 .flip-card {
     background: #FFE4E1;
     border-radius: 12px;
-    width: 100%;
-    max-width: 100%;
-    min-height: 170px;
-    padding: 25px 12px;
+    width: 85vw;
+    max-width: 320px;
+    height: 170px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,14 +60,13 @@ body {
 }
 
 /* 四欄數字與標籤對齊 */
-.number,
-.label {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    width: 100%;
-    text-align: center;
-    justify-items: center;
-    align-items: center;
+.number {
+    font-family: "Noto Serif JP", serif;
+    color: #3e3e3e;
+    font-size: clamp(22px, 6vw, 30px);
+    font-weight: 600;
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
 }
 
 .number {
